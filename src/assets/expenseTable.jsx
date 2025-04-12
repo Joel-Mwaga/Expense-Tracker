@@ -7,6 +7,7 @@ const ExpenseTable = ({ expenses, onDeleteExpense }) => (
         <th>Description</th>
         <th>Category</th>
         <th>Amount</th>
+        <th>Date</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@ const ExpenseTable = ({ expenses, onDeleteExpense }) => (
           <td>{expense.description}</td>
           <td>{expense.category}</td>
           <td>${expense.amount.toFixed(2)}</td>
+          <td>{expense.date}</td>
           <td>
             <button onClick={() => onDeleteExpense(expense.id)}>Delete</button>
           </td>

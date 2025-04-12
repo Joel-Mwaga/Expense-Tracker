@@ -4,20 +4,23 @@ const ExpenseForm = ({ onAddExpense }) => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!description || !category || !amount) return;
+    if (!description || !category || !amount || !date) return;
 
     onAddExpense({
       description,
       category,
       amount: parseFloat(amount),
+      date,
     });
 
     setDescription('');
     setCategory('');
     setAmount('');
+    setDate('');
   };
 
   return (
@@ -44,6 +47,14 @@ const ExpenseForm = ({ onAddExpense }) => {
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Date:</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
       </div>
       <button type="submit">Add Expense</button>
