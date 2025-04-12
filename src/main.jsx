@@ -25,6 +25,8 @@ const App = () => {
       expense.date.includes(searchTerm)
   );
 
+  const totalAmount = filteredExpenses.reduce((total, expense) => total + expense.amount, 0);
+
   return (
     <div className="app-container">
       <header>
@@ -38,6 +40,9 @@ const App = () => {
         <div className="table-container">
           <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
           <ExpenseTable expenses={filteredExpenses} onDeleteExpense={handleDeleteExpense} />
+          <div className="total-container">
+            <h3>Total Expenses: ${totalAmount.toFixed(2)}</h3>
+          </div>
         </div>
       </div>
     </div>
