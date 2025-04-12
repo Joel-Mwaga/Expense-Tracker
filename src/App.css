@@ -7,29 +7,66 @@ body {
   color: #333;
 }
 
-#root {
-  max-width: 1280px;
+.app-container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+header {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #4a90e2;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Layout */
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-container {
+  flex: 1;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+  flex: 2;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
 h1 {
   font-size: 2.5rem;
   color: #4a90e2;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 /* Form Styles */
 form {
   background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  max-width: 600px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto 2rem;
+  max-width: 500px;
 }
 
 form div {
@@ -47,7 +84,7 @@ form input {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 1rem;
 }
 
@@ -56,10 +93,11 @@ button {
   color: #fff;
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 button:hover {
@@ -70,11 +108,11 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
@@ -89,6 +127,10 @@ th {
   font-weight: bold;
 }
 
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
 tr:hover {
   background-color: #f1f1f1;
 }
@@ -97,13 +139,13 @@ td {
   color: #555;
 }
 
-/* Input Field for Search */
+/* Search Bar */
 input[type="text"] {
   width: 100%;
   max-width: 400px;
   padding: 0.8rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 1rem;
   margin: 1rem auto;
   display: block;
@@ -151,5 +193,63 @@ input[type="text"] {
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 0.8rem;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .form-container, .table-container {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 0.6rem;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
   }
 }

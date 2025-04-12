@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import ExpenseTable from './assets/expenseTable';
+import ReactDOM from 'react-dom/client';
+import './App.css';
 import ExpenseForm from './assets/expenseForm';
-import SearchBar from './assets/searchbar';
+import ExpenseTable from './assets/expenseTable';
+import SearchBar from './assets/searchBar';
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
@@ -12,11 +11,11 @@ const App = () => {
 
   const handleAddExpense = (expense) => {
     const newExpense = { ...expense, id: Date.now() };
-    setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+    setExpenses((prev) => [...prev, newExpense]);
   };
 
   const handleDeleteExpense = (id) => {
-    setExpenses((prevExpenses) => prevExpenses.filter((expense) => expense.id !== id));
+    setExpenses((prev) => prev.filter((expense) => expense.id !== id));
   };
 
   const filteredExpenses = expenses.filter(
@@ -26,17 +25,23 @@ const App = () => {
   );
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-      <ExpenseForm onAddExpense={handleAddExpense} />
-      <ExpenseTable expenses={filteredExpenses} onDeleteExpense={handleDeleteExpense} />
+    <div className="app-container">
+      <header>
+        <h1>Expense Tracker</h1>
+        <p>Welcome to Expense Tracker! Manage your expenses efficiently by adding, viewing, and filtering your expenses.</p>
+      </header>
+      <div className="content">
+        <div className="form-container">
+          <ExpenseForm onAddExpense={handleAddExpense} />
+        </div>
+        <div className="table-container">
+          <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+          <ExpenseTable expenses={filteredExpenses} onDeleteExpense={handleDeleteExpense} />
+        </div>
+      </div>
     </div>
   );
 };
-
-import ReactDOM from 'react-dom/client';
-import './App.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
